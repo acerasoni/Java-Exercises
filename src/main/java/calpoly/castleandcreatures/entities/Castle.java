@@ -14,7 +14,23 @@ public class Castle {
         this.name = name;
     }
 
+    public void removeRoom(Room room) {
+        rooms.remove(room);
+    }
+
     public void addRoom(Room room) {
         this.rooms.add(room);
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public List<Room> getRooms() {
+        return rooms;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 }

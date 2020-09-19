@@ -19,4 +19,8 @@ public class Creature {
         // Odds determined by strength
         return getRandomNumber(1, 100) <= strength ? true : false;
     }
+
+    public int getSuccessRate() {
+        return 100 - strength;
+    }
 }

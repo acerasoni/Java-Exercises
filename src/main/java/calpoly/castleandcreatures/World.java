@@ -3,10 +3,7 @@ package calpoly.castleandcreatures;
 import calpoly.castleandcreatures.entities.Castle;
 import calpoly.castleandcreatures.entities.Player;
 
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.FileWriter;
-import java.io.IOException;
+import java.io.*;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.FileSystems;
 import java.nio.file.Files;
@@ -14,7 +11,9 @@ import java.nio.file.NoSuchFileException;
 import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 
+import static calpoly.castleandcreatures.util.Names.ASCII_TITLE;
 import static calpoly.castleandcreatures.util.WorldParser.*;
 
 /**
@@ -30,9 +29,12 @@ public class World {
     private Player player;
     private int[] map;
 
+    private transient Scanner scanner;
+
     public World() {
         castles = new ArrayList<>();
         player = new Player();
+        scanner = new Scanner(new InputStreamReader(System.in));
     }
 
     public void addCastle(Castle castle) {
@@ -40,15 +42,50 @@ public class World {
     }
 
     public static void main(String... args) {
+        System.out.println(ASCII_TITLE);
         readWorld();
         gameLoop();
         writeWorld();
     }
 
     private static void gameLoop() {
-        System.out.printf("You have %s lives and %s points", world.player.getLives(), world.player.getPoints());
+        OUTER:
+        for (; ; ) {
+            // Check castles
+            if (world.castles.size() == 0) {
+                System.out.println("Well done! You have cleared all the castles. Your final score is " + world.player.getPoints() + " and " + world.player.getLives() + " remaining lives!");
+                new File(filePath).delete();
+                break OUTER;
+            }
+            // Check lives
+            if (world.player.getLives() <= 0) {
+                System.out.println("You have died! Your final score is " + world.player.getPoints() + " points.");
+                new File(filePath).delete();
+                break OUTER;
+            }
 
-        System.out.println("This is the current map. 0 is ")
+            // Separator
+            System.out.println("<----------------------->");
+
+            // Show lives and points
+            System.out.printf("You have %s lives and %s points\n", world.player.getLives(), world.player.getPoints());
+
+            // Show position
+            System.out.println("You are currently " + world.player.showPosition());
+
+            // Show movement options
+            System.out.println("\nYou have the following options\n" + world.player.showOptions());
+
+            // Read option and pass to Player entity
+            Boolean success;
+            do {
+                success = world.player.act(world.scanner.nextLine());
+                if (success == null) {
+                    break OUTER;
+                }
+            } while (!success);
+        }
+
     }
 
     private static void readWorld() {
@@ -56,13 +93,21 @@ public class World {
         // Read the world from file
         try {
             String worldJson = Files.readString(path, StandardCharsets.US_ASCII);
-            world = worldFromJson(worldJson);
+            if (worldJson != null && worldJson.length() > 0) {
+                world = worldFromJson(worldJson);
+            }
         } catch (NoSuchFileException e) {
             // No save file exists
             world = freshWorld();
         } catch (IOException e) {
             // IO Error
             e.printStackTrace();
+        }
+
+        if (world == null) {
+            world = freshWorld();
+        } else {
+            world.player.setCastles(world.castles);
         }
     }
 
