@@ -1,0 +1,11 @@
+
+\
+java:S1128":Remove this unused import 'java.io.FileNotFoundException'.(·î™ùÿÿÿÿ8™êË¬Ê.
+„
+java:S4087J"bRemove this "close" call; closing the resource is handled automatically by the try-with-resources.(§¾áïûÿÿÿÿ8­¾¬Ê.
+Q
+java:S1128"/Remove this unused import 'java.io.FileReader'.(Â¡¢äşÿÿÿÿ8ïıÄ¬Ê.
+T	java:S1061"9Replace this use of System.out or System.err by a logger.(Ö¥ƒ8 ¾ä¬Ê.
+{	java:S115"ZRename this constant name to match the regular expression '^[A-Z][A-Z0-9]*(_[A-Z0-9]+)*$'.(³˜¾Êùÿÿÿÿ8­¾¬Ê.
+I
+java:S1068"'Remove this unused "map" private field.(¤ÇŸ¶øÿÿÿÿ8¼£à¬Ê.

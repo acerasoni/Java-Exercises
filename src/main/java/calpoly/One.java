@@ -18,10 +18,10 @@ package calpoly;
 
 public class One {
 
-    private static final int[][] map = {{34, 21, 32, 41, 25}, {14, 42, 43, 14, 31}, {54, 45, 52, 42, 23}, {33, 15, 51, 31, 35}, {21, 52, 33, 13, 23}};
+    public static final int[][] MAP = {{34, 21, 32, 41, 25}, {14, 42, 43, 14, 31}, {54, 45, 52, 42, 23}, {33, 15, 51, 31, 35}, {21, 52, 33, 13, 23}};
 
     public static void main(String... args) {
-        System.out.println("Treasure found at cell:" + findTreasure(map));
+        System.out.println("Treasure found at cell:" + findTreasure(MAP));
     }
 
     private static String findTreasure(int[][] map) {

@@ -1,0 +1,18 @@
+
+g
+java:S1124"EReorder the modifiers to comply with the Java Language Specification.(‚øıÛúÿÿÿÿ8“„ÒÉ.
+D
+java:S1068"'Remove this unused "one" private field.(”à‚8“„ÒÉ.
+v	java:S115"ZRename this constant name to match the regular expression '^[A-Z][A-Z0-9]*(_[A-Z0-9]+)*$'.(”à‚8¸ÆƒÒÉ.
+D
+java:S1068"'Remove this unused "two" private field.(êı¥‡8“„ÒÉ.
+K
+java:S1068")Remove this unused "three" private field.(‚øıÛúÿÿÿÿ8“„ÒÉ.
+£
+java:S1186"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(¾¥îÙøÿÿÿÿ8¢£…ÒÉ.
+{	java:S115"ZRename this constant name to match the regular expression '^[A-Z][A-Z0-9]*(_[A-Z0-9]+)*$'.(‚øıÛúÿÿÿÿ8“„ÒÉ.
+v	java:S115"ZRename this constant name to match the regular expression '^[A-Z][A-Z0-9]*(_[A-Z0-9]+)*$'.(êı¥‡8“„ÒÉ.
+b
+java:S1124"EReorder the modifiers to comply with the Java Language Specification.(”à‚8“„ÒÉ.
+b
+java:S1124"EReorder the modifiers to comply with the Java Language Specification.(êı¥‡8“„ÒÉ.
