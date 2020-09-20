@@ -117,6 +117,7 @@ public class World {
             String worldJson = worldToJson(world);
             fileWriter.write(worldJson);
             fileWriter.close();
+
         } catch (IOException e) {
             // Exception handling
         }
